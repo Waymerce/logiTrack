@@ -1,8 +1,6 @@
-const axios = require('axios');
 const FeishuAuth = require('./FeishuAuth');
 const WaybillService = require('./WaybillServices');
 const CDCarrierService = require('./CDCarrierService');
-const Waybill = require('./models/Waybill');
 
 //1. 连接飞书多维表
 
@@ -17,8 +15,6 @@ const viewToken = ""
 
 const cdUsername = "";
 const cdPassword = "";
-
-const pageSize = 100
 
 let feishuAuth = new FeishuAuth(appId, appSecret);
 
