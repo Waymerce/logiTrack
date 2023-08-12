@@ -8,6 +8,8 @@ class Waybill {
     recordId;
     shipmentId;
     warehouseCode;
+    shippingDetailsCode;
+    isShippingDetailsSynced;
 
     departureTime;
     portArrivalTime;
@@ -15,6 +17,7 @@ class Waybill {
     appointmentTime;
     deliveryTime;
     portETA;
+    shippingDetailList;
 
     constructor() {
         this.waybillNum = '';
@@ -22,6 +25,7 @@ class Waybill {
         this.warehouseCode = '';
         this.status = '';
         this.recordId = '';
+        this.shippingDetailsCode = '';
     }
 
 }
