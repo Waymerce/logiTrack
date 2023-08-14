@@ -122,17 +122,19 @@ class WaybillService {
         let records = await this.getRecords(this.appToken, this.tableToken, filterView);
         let waybillList = this.getWaybillsFromRecords(records);
 
-        for (const waybill of waybillList) {
-            if (waybill.shippingDetailList && waybill.shippingDetailList.length > 0) {
-                const updateShippingDetails = await this.updateShippingDetails(shippingDetailsAppToken,
-                    shippingDetailsTableToken, waybill.shippingDetailList);
+        if (waybillList && waybillList.length > 0) {
+            for (const waybill of waybillList) {
+                if (waybill.shippingDetailList && waybill.shippingDetailList.length > 0) {
+                    const updateShippingDetails = await this.updateShippingDetails(shippingDetailsAppToken,
+                        shippingDetailsTableToken, waybill.shippingDetailList);
 
-                /*如果成功，更新状态*/
-                if (updateShippingDetails) {
-                    console.info("Update Details Sucessfully");
-                    await this.updateShippingDetailSyncStatus(waybill);
-                } else {
-                    console.error("ERROR WHILE UPDATING SHIPPING DETAILS TABLE" + waybill.shipmentId);
+                    /*如果成功，更新状态*/
+                    if (updateShippingDetails) {
+                        console.info("Update Details Sucessfully");
+                        await this.updateShippingDetailSyncStatus(waybill);
+                    } else {
+                        console.error("ERROR WHILE UPDATING SHIPPING DETAILS TABLE" + waybill.shipmentId);
+                    }
                 }
             }
         }
