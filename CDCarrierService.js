@@ -83,8 +83,9 @@ class CDCarrierService {
                 return waybill;
 
             } else {
-                console.log(`Failed to fetch data: ${response.data.code}`);
-                throw new Error(`Failed to fetch data: ${response.data}`);
+                console.log(`Failed to fetch data: ${response.data.code}, for the Waybill Num: ${waybill.waybillNum}`);
+                console.log("Failed to fetch data: " + JSON.stringify(response.data));// 不再抛出错误
+                // throw new Error(`Failed to fetch data: ${response.data}`);
             }
 
         } catch (error) {
